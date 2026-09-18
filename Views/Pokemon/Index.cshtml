@@ -1,0 +1,44 @@
+@model IEnumerable<PokemonSummary>
+
+@{
+    ViewData["Title"] = "Catálogo de Pokémon";
+    var errorMessage = ViewBag.ErrorMessage as string ?? TempData["ErrorMessage"] as string;
+}
+
+<div class="container-fluid text-center">
+    <h1>Catálogo de Pokémon</h1>
+
+    @if (!string.IsNullOrEmpty(errorMessage))
+    {
+        <div class="alert alert-warning" role="alert">@errorMessage</div>
+    }
+
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+        @foreach (var pokemon in Model)
+        {
+            <div class="card" style="width: 16rem;">
+                <img src="@pokemon.ImageUrl"
+                     class="card-img-top img-fluid"
+                     alt="@pokemon.Name"
+                     style="height: 200px; width: auto; margin: auto; object-fit: contain;" />
+                <div class="card-body d-flex flex-column justify-content-between">
+                    <h5 class="card-title">@pokemon.Name</h5>
+                    <p class="card-text">
+                        @foreach (var type in pokemon.Types)
+                        {
+                            <span class="badge bg-secondary">@type</span>
+                        }
+                    </p>
+                    <a asp-controller="Pokemon" asp-action="Details" asp-route-id="@pokemon.Id" class="btn btn-primary">
+                        Ver detalles
+                    </a>
+                </div>
+            </div>
+        }
+    </div>
+
+    @if (!Model.Any() && string.IsNullOrEmpty(errorMessage))
+    {
+        <p class="text-muted mt-4">No hay Pokémon para mostrar.</p>
+    }
+</div>

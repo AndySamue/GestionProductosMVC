@@ -1,0 +1,38 @@
+@model PokemonDetail
+
+@{
+    ViewData["Title"] = Model.Name;
+}
+
+<div class="container-fluid text-center">
+    <h1>@Model.Name</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <img src="@Model.ImageUrl" alt="@Model.Name" class="img-fluid" />
+        </div>
+        <div class="col-md-4 text-start">
+            <p>
+                @foreach (var type in Model.Types)
+                {
+                    <span class="badge bg-secondary">@type</span>
+                }
+            </p>
+            <p><strong>Altura:</strong> @Model.HeightMeters.ToString("0.0") m</p>
+            <p><strong>Peso:</strong> @Model.WeightKilograms.ToString("0.0") kg</p>
+            <p><strong>Habilidades:</strong> @string.Join(", ", Model.Abilities)</p>
+
+            <h5>Estadísticas base</h5>
+            <ul class="list-group mb-3">
+                @foreach (var stat in Model.Stats)
+                {
+                    <li class="list-group-item d-flex justify-content-between">
+                        <span>@stat.Name</span>
+                        <span>@stat.BaseValue</span>
+                    </li>
+                }
+            </ul>
+
+            <a class="btn btn-primary" asp-controller="Pokemon" asp-action="Index" role="button">Volver al catálogo</a>
+        </div>
+    </div>
+</div>

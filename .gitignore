@@ -1,0 +1,15 @@
+# Compilados y artefactos de build
+bin/
+obj/
+
+# Visual Studio / Rider
+.vs/
+.vscode/
+*.user
+*.suo
+
+# Logs
+*.log
+
+# Configuración local con secretos (no debe subirse)
+appsettings.*.local.json
