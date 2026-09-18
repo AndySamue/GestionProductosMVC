@@ -1,8 +1,44 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+@{
+    ViewData["Title"] = "Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center py-4">
+    <img src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/items/poke-ball.png"
+         alt="Pokébola"
+         style="width: 72px; height: 72px;" />
+
+    <h1 class="display-5 mt-3">Gestión de Productos</h1>
+    <p class="lead text-muted">
+        Catálogo de productos construido en ASP.NET Core MVC, consumiendo la
+        <a href="https://pokeapi.co/docs/v2" target="_blank" rel="noopener noreferrer">PokeAPI</a>
+        como fuente de datos: cada Pokémon representa un producto del catálogo.
+    </p>
+
+    <a asp-controller="Pokemon" asp-action="Index" class="btn btn-danger btn-lg mt-2">
+        Ver catálogo
+    </a>
+</div>
+
+<div class="row text-center mt-5 g-4">
+    <div class="col-md-4">
+        <h5>Arquitectura MVC</h5>
+        <p class="text-muted">
+            Modelo, Vista y Controlador separados, con inyección de dependencias
+            y una capa de servicio propia para el acceso a datos.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h5>Datos en tiempo real</h5>
+        <p class="text-muted">
+            El listado y el detalle se obtienen en vivo desde la PokeAPI,
+            sin datos hardcodeados en la aplicación.
+        </p>
+    </div>
+    <div class="col-md-4">
+        <h5>Buenas prácticas</h5>
+        <p class="text-muted">
+            Configuración externalizada, manejo de errores controlado y
+            protección ante fallas de la API externa.
+        </p>
+    </div>
 </div>
